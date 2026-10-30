@@ -1,26 +1,57 @@
-# 🎬 Adobe Motion Templates (`amalfx`)
+# Adobe Motion Templates & Tools
 
-A curated library of **Adobe After Effects** and **Premiere Pro** templates, MOGRTs, presets, and motion graphics assets built for fast, high-retention video workflows.
+A small open-source toolkit for organizing and documenting motion-design assets used with Adobe After Effects and Premiere Pro.
 
----
+## Motion Asset Catalog
 
-## 📂 Repository Structure
+`motion_asset_catalog.py` scans a folder for common creative-production files and generates:
 
-* **`/after-effects`** — `.aep` project files, compositions, and `.ffx` animation presets.
-* **`/premiere-pro`** — `.mogrt` (Motion Graphics Templates), `.prproj` sequences, and transition presets.
-* **`/shared-assets`** — Required fonts, LUTs (`.cube`), and essential overlays/SFX.
+- `index.html`: a searchable, dark-themed HTML catalog.
+- `assets.csv`: a spreadsheet-friendly inventory with file type, relative path, size, and modified date.
 
----
+It uses only the Python standard library. No third-party packages are required.
 
-## 🚀 Upcoming Templates (To-Do)
-- [ ] High-Retention Hook & Caption MOGRTs (9:16 Vertical)
-- [ ] Before & After Split-Screen Comparison Comps
-- [ ] Product Promo & Offer Callout Badges
-- [ ] Smooth Zoom & Speed-Ramp Presets (`.ffx` / `.prfpset`)
+### Requirements
 
----
+- Python 3.9 or newer
+- macOS, Windows, or Linux
 
-## 🛠️ How to Use
-1. Browse the folders above or check the **Releases** tab on the right for packaged `.zip` downloads.
-2. For `.mogrt` files: Open Premiere Pro → **Window > Essential Graphics** → Click the **Install Motion Graphics Template** icon (bottom-right corner).
-3. For `.aep` / `.prproj` files: Install any fonts located in `/shared-assets/fonts` before opening the project to avoid missing font warnings.
+### Run it
+
+```bash
+python motion_asset_catalog.py "/path/to/your/assets"
+```
+
+Choose an output folder:
+
+```bash
+python motion_asset_catalog.py "/path/to/your/assets" --output catalog
+```
+
+Scan only the selected folder, not subfolders:
+
+```bash
+python motion_asset_catalog.py "/path/to/your/assets" --top-level-only
+```
+
+Open `motion-asset-catalog/index.html` in a browser to search the catalog. Open `assets.csv` in Excel or Google Sheets.
+
+### Supported file types
+
+After Effects (`.aep`, `.aepx`, `.ffx`), Premiere Pro (`.prproj`, `.mogrt`), scripts (`.jsx`, `.jsxbin`), LUTs (`.cube`, `.look`), and common media/design files.
+
+### Run tests
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+GitHub Actions runs these tests automatically on pushes and pull requests.
+
+## Project status
+
+This is an early-stage project. Contributions, bug reports, and feature suggestions are welcome. Please open an issue before proposing large changes.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
