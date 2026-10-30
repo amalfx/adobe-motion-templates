@@ -8,7 +8,6 @@ jobs:
   test:
     name: Run Motion Catalog Tests
     runs-on: ubuntu-latest
-
     steps:
 
 ◦ name: Checkout repository.
